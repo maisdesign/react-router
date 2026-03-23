@@ -3,9 +3,9 @@ import Header from "../components/header/Header"
 import Footer from "../components/footer/Footer"
 
 
-function DefaultLayout({ apiCategory }) {
+function HomeLayout({ apiCategory }) {
     return (
-        <div className="container-fluid">
+        <div>
             <Header apiCategory={apiCategory} />
             <Outlet />
             <Footer />
@@ -13,4 +13,4 @@ function DefaultLayout({ apiCategory }) {
     )
 }
 
-export default DefaultLayout
+export default HomeLayout

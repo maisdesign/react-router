@@ -23,5 +23,5 @@ dist-ssr
 *.sln
 *.sw?
 
-*storybook.log
-storybook-static
+# Local planning docs
+home-implementation-roadmap.local.md

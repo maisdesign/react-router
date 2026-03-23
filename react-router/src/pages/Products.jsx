@@ -1,52 +1,43 @@
-import axios from 'axios';
 import { useState, useEffect } from 'react'
 import { PacmanLoader } from 'react-spinners'
+import { fetcher } from '../data/fetcher.jsx'
+import { Link } from "react-router-dom";
+import { ITEMS_PER_PAGE } from "../data/config.js"
 
-function Products() {
+function Products({ origin }) {
     const [items, setItems] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
 
     useEffect(() => {
-        (
-            axios.get(`https://fakestoreapi.com/products`).then((response) => {
-                setItems(response.data);
+        fetcher(origin).then((response) => {
+            setItems(response.data);
+            setLoading(false);
+        })
+            .catch((err) => {
+                setError(err.message);
                 setLoading(false);
             })
-                .catch((err) => {
-                    setError(err.message);
-                    setLoading(false);
-                })
-        )
-    }, [])
+    }, [origin])
 
     return <>
         {loading && <PacmanLoader color="rgba(92, 230, 44, 1)" />}
         {error && <div className="danger">Errore: {error}</div>}
-        <div className="items-container row">
+        <div className="items-container">
             {
                 items.map((item) =>
-                    <div key={item.id} className="card col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
-                        <img src={item.image} className="card-img-top" alt={item.title} />
-                        <div className="card-body">
-                            <h5 className="card-title">{item.title}</h5>
-                            <p className="card-text">{item.description}</p>
+                    <Link key={item.id} className="product-card" to={"/product/" + item.id}>
+                        <div className="product-card-image-box">
+                            <img src={item.image} className="product-card-img" alt={item.title} />
+                            <div className="product-card-hover-btn">
+                                <span className="material-symbols-outlined">add_shopping_cart</span>
+                            </div>
                         </div>
-                        <ul className="list-group list-group-flush">
-                            <li className="list-group-item">{item.price}€</li>
-                            <li className="list-group-item">{item.category}</li>
-                            <li className="list-group-item">
-                                <ul className="ratings">
-                                    <li>{item.rating.count}</li>
-                                    <li>{item.rating.rate}</li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <div className="card-body">
-                            <a href="#" className="card-link">Card link</a>
-                            <a href="#" className="card-link">Another link</a>
+                        <div className="product-card-info">
+                            <p className="product-card-title">{item.title}</p>
+                            <span className="product-card-price">{item.price}€</span>
                         </div>
-                    </div>
+                    </Link>
                 )
             }
         </div>

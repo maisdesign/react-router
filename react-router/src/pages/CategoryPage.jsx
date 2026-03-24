@@ -5,7 +5,6 @@ export default function CategoryPage() {
     const { categoryName } = useParams();
     const categoryUrl = singleCategoryApi + categoryName;
 
-    return <>
-        <Products origin={categoryUrl} />
-    </>
+    return <Products origin={categoryUrl} basePath={"/category/" + categoryName} title={categoryName} />
+
 }

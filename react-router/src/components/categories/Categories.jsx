@@ -21,7 +21,7 @@ export default function Categories({ apiCategory }) {
                                 {category.firstItem}
                             </span>
                             <h4>{category.title}</h4>
-                            <p className="category-subtitle label">Technical Silhouettes</p>
+                            <p className="category-subtitle label">Enhance your {category.title}</p>
 
                         </div>
                         <a className="position-absolute top-0 start-0 w-100 h-100" href="#"></a>

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { productsApi } from "../data/apiEndPoints.js"
 import SingleProduct from "../components/products/singleProduct/SingleProduct.jsx"
 import { PacmanLoader } from 'react-spinners'
-import { fetcher } from "../data/fetcher.jsx"
+import { fetcher } from "../data/fetcher.js"
 export default function ProductDetail() {
     const { id } = useParams();
     const productUrl = productsApi + id;
@@ -14,8 +14,6 @@ export default function ProductDetail() {
         fetcher(productUrl).then(
             (response) => {
                 setSingleProduct(response.data);
-
-
                 setLoading(false)
             })
             .catch((err) => {

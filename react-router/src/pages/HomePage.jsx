@@ -5,7 +5,7 @@ import Categories from "../components/categories/Categories.jsx"
 import HomeSingleProduct from "../components/products/singleProduct/HomeSingleProduct.jsx"
 import Newsletter from "../components/sections/Newsletter.jsx"
 import { categoriesApi, singleCategoryApi } from "../data/apiEndPoints.js"
-import { fetcher } from '../data/fetcher.jsx'
+import { fetcher } from '../data/fetcher.js'
 import { heroConfigObj, brandIdentityObj, featuredObj } from "../data/config.js"
 import { PacmanLoader } from 'react-spinners'
 

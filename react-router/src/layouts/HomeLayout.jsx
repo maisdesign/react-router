@@ -5,7 +5,7 @@ import Footer from "../components/footer/Footer"
 
 function HomeLayout({ apiCategory }) {
     return (
-        <div>
+        <div className="container-fluid">
             <Header apiCategory={apiCategory} />
             <Outlet />
             <Footer />

@@ -7,7 +7,9 @@ function HomeLayout({ apiCategory }) {
     return (
         <div className="container-fluid">
             <Header apiCategory={apiCategory} />
-            <Outlet />
+            <main>
+                <Outlet />
+            </main>
             <Footer />
         </div>
     )

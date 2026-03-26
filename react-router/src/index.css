@@ -1269,6 +1269,18 @@ h4 {
   gap: 0.5rem;
 }
 
+@media (min-width: 768px) {
+  .footer-links {
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .footer-links-col {
+    flex-direction: row;
+    gap: 2rem;
+  }
+}
+
 .footer-link {
   font-family: "Space Grotesk", sans-serif;
   font-size: 0.625rem;

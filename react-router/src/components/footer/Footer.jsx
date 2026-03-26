@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 function Footer() {
     return (
         <footer className="site-footer">
@@ -12,15 +12,15 @@ function Footer() {
                 </div>
                 <div className="footer-links">
                     <div className="footer-links-col">
-                        <a className="footer-link label" href="#">Terms</a>
-                        <a className="footer-link label" href="#">Privacy</a>
+                        <Link className="footer-link label" to="/">Terms</Link>
+                        <Link className="footer-link label" to="/">Privacy</Link>
                     </div>
                     <div className="footer-links-col">
-                        <a className="footer-link label" href="#">Shipping</a>
-                        <a className="footer-link label" href="#">API Documentation</a>
+                        <Link className="footer-link label" to="/">Shipping</Link>
+                        <Link className="footer-link label" to="/">API Documentation</Link>
                     </div>
                     <div className="footer-links-col">
-                        <span className="material-symbols-outlined footer-link" style={{cursor: 'pointer'}}>language</span>
+                        <button className="material-symbols-outlined footer-link" style={{ cursor: 'pointer' }}>language</button>
                     </div>
                 </div>
             </div>

@@ -14,6 +14,9 @@ export default function ProductDetail() {
     const [singleProduct, setSingleProduct] = useState({})
     const [loading, setLoading] = useState(true)
     const { totalProducts } = useCategories()
+    const navButtons = (<div className="product-nav-bar">
+        {id > 1 ? <button className="product-nav-btn" onClick={() => navigate("/product/" + (id - 1))}>Prev</button> : null}{id < totalProducts ? <button className="product-nav-btn" onClick={() => navigate("/product/" + (id + 1))}>Next</button> : null}
+    </div>)
     useEffect(() => {
         fetcher(productUrl).then(
             (response) => {
@@ -29,14 +32,9 @@ export default function ProductDetail() {
     return <>
         {(loading) ? <PacmanLoader color="rgba(92, 230, 44, 1)" /> :
             <>
-                <div className="product-nav-bar">
-                    {id > 1 ? <button className="product-nav-btn" onClick={() => navigate("/product/" + (id - 1))}>Prev</button> : null}{id < totalProducts ? <button className="product-nav-btn" onClick={() => navigate("/product/" + (id + 1))}>Next</button> : null}
-                </div>
+                {navButtons}
                 <SingleProduct product={singleProduct} />
-                <div className="product-nav-bar">
-                    {id > 1 ? <button className="product-nav-btn" onClick={() => navigate("/product/" + (id - 1))}>Prev</button> : null}
-                    {id < totalProducts ? <button className="product-nav-btn" onClick={() => navigate("/product/" + (id + 1))}>Next</button> : null}
-                </div>
+                {navButtons}
             </>
         }
 

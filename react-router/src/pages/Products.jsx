@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { PacmanLoader } from 'react-spinners'
 import { fetcher } from '../data/fetcher.js'
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { ITEMS_PER_PAGE } from "../data/config.js"
 import GridView from "../components/products/GridView.jsx"
 import ListView from "../components/products/ListView.jsx"
@@ -15,6 +15,8 @@ function Products({ origin, basePath, title = "The Collection" }) {
     const [error, setError] = useState(null)
     const [view, setView] = useState('grid')
     const [sortOption, setSortOption] = useState('featured')
+    const navigate = useNavigate()
+
 
     let sortedItems;
     switch (sortOption) {
@@ -26,16 +28,24 @@ function Products({ origin, basePath, title = "The Collection" }) {
         case "rating-desc": sortedItems = items.toSorted((a, b) => b.rating.rate - a.rating.rate); break;
         default: sortedItems = items;
     }
+
     useEffect(() => {
         fetcher(origin).then((response) => {
             setItems(response.data);
             setLoading(false);
+        }).catch((err) => {
+            setError(err.message);
+            setLoading(false);
         })
-            .catch((err) => {
-                setError(err.message);
-                setLoading(false);
-            })
     }, [origin])
+
+
+    useEffect(() => {
+        if (items.length === 0) return;
+        const totalPages = Math.ceil(items.length / ITEMS_PER_PAGE);
+        if (currentPage > totalPages) navigate(basePath + "/1", { replace: true });
+    }, [items, currentPage, basePath, navigate])
+
 
     const totalPages = Math.ceil(items.length / ITEMS_PER_PAGE);
     const pagination = [];

@@ -1,3 +1,8 @@
+/*
+* NAVBAR
+*/
+
+export const websiteName = "BoolStore";
 /* 
 * HERO 
 */

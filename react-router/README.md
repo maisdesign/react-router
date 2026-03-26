@@ -22,6 +22,26 @@ https://fakestoreapi.com/
 
 ---
 
+## Esercizio 2 — Pagina di dettaglio prodotto
+
+### Obiettivi
+
+- ✅ Ogni prodotto nella pagina Prodotti è cliccabile tramite `<Link>`
+- ✅ Pagina di dettaglio (`/product/:id`) che recupera i dati da `https://fakestoreapi.com/products/:id`
+- ✅ Routing dinamico con lettura dell'`id` dalla URL tramite `useParams()`
+
+### Bonus
+
+- ✅ Navigazione programmatica con `useNavigate()` verso il catalogo se il prodotto richiesto non esiste
+- ✅ Pagina **404** per route non riconosciute
+- ✅ Spinner di **loading** durante il caricamento del dettaglio
+
+### Super Bonus
+
+- ✅ Pulsanti **prodotto precedente / successivo** nella pagina di dettaglio, implementati con `useNavigate()` in modo programmatico
+
+---
+
 ## Sviluppo aggiuntivo post-esercizio
 
 Una volta completati gli obiettivi base, il progetto è stato esteso con un ciclo completo di design e implementazione UI.

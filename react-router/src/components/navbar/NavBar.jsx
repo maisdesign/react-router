@@ -1,11 +1,12 @@
 import { NavLink, Link } from "react-router-dom";
+import { websiteName } from "../../data/config.js"
 
 function NavBar({ location, apiCategory }) {
     return (
         <nav className="site-nav navbar navbar-expand-lg">
             <div className="site-nav-inner">
                 <div className="site-nav-left">
-                    <Link className="site-nav-brand" to="/">Boolstore</Link>
+                    <Link className="site-nav-brand" to="/">{websiteName}</Link>
                     <div className="collapse navbar-collapse" id={location + "Nav"}>
                         <ul className="site-nav-links">
                             <li>

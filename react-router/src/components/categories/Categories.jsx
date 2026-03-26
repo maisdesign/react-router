@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 export default function Categories({ apiCategory }) {
     return (
         <section className="categories">
@@ -7,7 +8,7 @@ export default function Categories({ apiCategory }) {
                     <span className="categories-catalog-label label">Catalog 01</span>
                     <h3 className="categories-title">The Collection</h3>
                 </div>
-                <a className="categories-explore-link label d-none d-md-block" href="#">Explore All Categories</a>
+                <Link to="/products/1" className="categories-explore-link label d-none d-md-block" >Explore All Products</Link>
             </div>
 
             <div className="categories-grid">
@@ -24,7 +25,7 @@ export default function Categories({ apiCategory }) {
                             <p className="category-subtitle label">Enhance your {category.title}</p>
 
                         </div>
-                        <a className="position-absolute top-0 start-0 w-100 h-100" href="#"></a>
+                        <Link to={"/category/" + category.title} className="position-absolute top-0 start-0 w-100 h-100" ></Link>
                     </div>
 
                 )

@@ -4,6 +4,8 @@ import { productsApi } from "../data/apiEndPoints.js"
 import SingleProduct from "../components/products/singleProduct/SingleProduct.jsx"
 import { PacmanLoader } from 'react-spinners'
 import { fetcher } from "../data/fetcher.js"
+import { useCategories } from "../contexts/CategoriesContext"
+
 export default function ProductDetail() {
     let { id } = useParams();
     id = parseInt(id);
@@ -11,6 +13,7 @@ export default function ProductDetail() {
     const productUrl = productsApi + id;
     const [singleProduct, setSingleProduct] = useState({})
     const [loading, setLoading] = useState(true)
+    const { totalProducts } = useCategories()
     useEffect(() => {
         fetcher(productUrl).then(
             (response) => {
@@ -27,12 +30,12 @@ export default function ProductDetail() {
         {(loading) ? <PacmanLoader color="rgba(92, 230, 44, 1)" /> :
             <>
                 <div className="product-nav-bar">
-                    {id > 1 ? <button className="product-nav-btn" onClick={() => navigate("/product/" + (id - 1))}>Prev</button> : null}{id < 20 ? <button className="product-nav-btn" onClick={() => navigate("/product/" + (id + 1))}>Next</button> : null}
+                    {id > 1 ? <button className="product-nav-btn" onClick={() => navigate("/product/" + (id - 1))}>Prev</button> : null}{id < totalProducts ? <button className="product-nav-btn" onClick={() => navigate("/product/" + (id + 1))}>Next</button> : null}
                 </div>
                 <SingleProduct product={singleProduct} />
                 <div className="product-nav-bar">
                     {id > 1 ? <button className="product-nav-btn" onClick={() => navigate("/product/" + (id - 1))}>Prev</button> : null}
-                    {id < 20 ? <button className="product-nav-btn" onClick={() => navigate("/product/" + (id + 1))}>Next</button> : null}
+                    {id < totalProducts ? <button className="product-nav-btn" onClick={() => navigate("/product/" + (id + 1))}>Next</button> : null}
                 </div>
             </>
         }

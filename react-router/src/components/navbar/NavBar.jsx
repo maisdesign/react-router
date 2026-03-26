@@ -1,7 +1,9 @@
 import { NavLink, Link } from "react-router-dom";
 import { websiteName } from "../../data/config.js"
+import { useCategories } from "../../contexts/CategoriesContext";
 
-function NavBar({ location, apiCategory }) {
+function NavBar({ location }) {
+    const { apiCategory } = useCategories();
     return (
         <nav className="site-nav navbar navbar-expand-lg">
             <div className="site-nav-inner">

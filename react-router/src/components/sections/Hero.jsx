@@ -1,4 +1,5 @@
 
+import { Link } from "react-router-dom";
 export default function Hero({ heroConfigObj }) {
     return (
         <section className="hero">
@@ -8,8 +9,8 @@ export default function Hero({ heroConfigObj }) {
                     <p className="hero-label label">{heroConfigObj.label}</p>
                     <h1>{heroConfigObj.title}<br />{heroConfigObj.title2}</h1>
                     <div className="d-flex gap-3 mt-4">
-                        <button className="btn btn-lg shop-btn label">{heroConfigObj.shopBtn}</button>
-                        <button className="btn btn-lg btn-outline-secondary label">{heroConfigObj.secondaryBtn}</button>
+                        <Link to="/products/1" className="btn btn-lg shop-btn label">{heroConfigObj.shopBtn}</Link>
+                        <Link to="/about-us" className="btn btn-lg btn-outline-secondary label">{heroConfigObj.secondaryBtn}</Link>
                     </div>
                 </div>
 

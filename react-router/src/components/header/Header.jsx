@@ -1,8 +1,8 @@
 import NavBar from "../navbar/NavBar"
-function Header({ apiCategory }) {
+function Header() {
     const navLocation = 'header';
     return <>
-        <NavBar location={navLocation} apiCategory={apiCategory} />
+        <NavBar location={navLocation} />
     </>
 }
 

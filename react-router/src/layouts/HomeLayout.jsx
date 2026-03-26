@@ -3,10 +3,10 @@ import Header from "../components/header/Header"
 import Footer from "../components/footer/Footer"
 
 
-function HomeLayout({ apiCategory }) {
+function HomeLayout() {
     return (
         <div className="container-fluid">
-            <Header apiCategory={apiCategory} />
+            <Header />
             <main>
                 <Outlet />
             </main>

@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 export default function NotFound() {
     return <>
 
-        <main className="not-found d-flex justify-content-center align-items-center">
+        <div className="not-found d-flex justify-content-center align-items-center">
             <div className="row align-items-center w-100">
 
                 <div className="not-found-sidebar col-lg-1 d-none d-lg-flex flex-column justify-content-between">
@@ -30,12 +31,12 @@ export default function NotFound() {
                     </div>
 
                     <div className="d-flex flex-column flex-sm-row align-items-center gap-3 mt-5">
-                        <a className="shop-btn text-decoration-none" href="/">
+                        <Link to="/" className="shop-btn text-decoration-none" >
                             BACK TO HOME
-                        </a>
-                        <a className="categories-explore-link" href="/products/1">
+                        </Link>
+                        <Link to="/products/1" className="categories-explore-link" >
                             EXPLORE COLLECTIONS
-                        </a>
+                        </Link>
                     </div>
 
                     <div className="not-found-bg d-none d-xl-block">
@@ -45,6 +46,6 @@ export default function NotFound() {
 
                 <div className="col-lg-1"></div>
             </div>
-        </main>
+        </div>
     </>
 }
